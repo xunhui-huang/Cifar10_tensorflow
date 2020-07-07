@@ -8,6 +8,8 @@ I tried to compile different cnn net using tensorflow based on cifar10 dataset.
 -
     python main.py
     also,you can adopt different networks by changing the content of main.py.
+## Warning
+- This is just a coarse impletation,you can improve net accuracy by further adjusting the super parameters.
 ## Reference
 -  Thanks for the awesome work from the following:
-    [Github]()
+    [Github](https://github.com/persistforever/cifar10-tensorflow)
