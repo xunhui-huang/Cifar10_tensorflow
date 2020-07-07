@@ -1,0 +1,54 @@
+residual_layers: 
+  3
+conv_x_num: 
+  [3,4,6,4]
+residual_block_num: 
+  4
+residual_block: 
+  ["conv2_x","conv3_x","conv4_x","conv5_x"]
+
+net: 
+  conv_first: 
+    - {type: "conv",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 16,activation: "relu",name: "conv1_1",bn: True}
+  
+  pool_first:
+    - {type: "pool", x_size: 2,y_size: 2,x_stride: 2,y_stride: 2,mode: "max",name: "pool1"}
+
+  conv2_x:
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 16,activation: "relu",name: "res2_1",bn: True}
+    - {type: "identity_block",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 16,activation: "relu",name: "res2_2",bn: True}
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 16,activation: "relu",name: "res2_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 16,activation: "relu",name: "res2_1",bn: True}
+    - {type: "conv_block",x_size: 3,y_size: 3,x_stride: 2,y_stride: 2,n_filters: 16,activation: "relu",name: "res2_2",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "res2_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 2,y_stride: 2,n_filters: 32,activation: "relu",name: "res2_3",bn: True}
+
+  conv3_x:
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "res3_1",bn: True}
+    - {type: "identity_block",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "res3_2",bn: True}
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "res3_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "res3_1",bn: True}
+    - {type: "conv_block",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "res3_2",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "res3_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "res2_3",bn: True}
+  
+  conv4_x:
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "res4_1",bn: True}
+    - {type: "identity_block",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "res4_2",bn: True}
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "res4_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "res4_1",bn: True}
+    - {type: "conv_block",x_size: 3,y_size: 3,x_stride: 2,y_stride: 2,n_filters: 64,activation: "relu",name: "res4_2",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 128,activation: "relu",name: "res4_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 2,y_stride: 2,n_filters: 128,activation: "relu",name: "res2_3",bn: True}
+
+  conv5_x:
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 128,activation: "relu",name: "res5_1",bn: True}
+    - {type: "identity_block",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 128,activation: "relu",name: "res5_2",bn: True}
+    - {type: "identity_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 128,activation: "relu",name: "res5_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 128,activation: "relu",name: "res5_1",bn: True}
+    - {type: "conv_block",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 128,activation: "relu",name: "res5_2",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 256,activation: "relu",name: "res5_3",bn: True}
+    - {type: "conv_block",x_size: 1,y_size: 1,x_stride: 1,y_stride: 1,n_filters: 256,activation: "relu",name: "res2_3",bn: True}
+  
+  dense_first:
+    - {type: "dense",hidden_dim: 10,dropout: False,activation: "None",name: "dense1",bn: False}

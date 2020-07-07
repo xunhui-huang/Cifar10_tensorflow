@@ -1,0 +1,9 @@
+net:
+  conv:
+    - {type: "conv",x_size: 5,y_size: 5,x_stride: 1,y_stride: 1,n_filters: 32,activation: "relu",name: "conv1",bn: True}
+    - {type: "pool1",x_size: 2,y_size: 2,x_stride: 2,y_stride: 2,mode: "max",name: "pool1"}
+    - {type: "conv",x_size: 3,y_size: 3,x_stride: 1,y_stride: 1,n_filters: 64,activation: "relu",name: "conv2",bn: True}
+    - {type: "pool2",x_size: 2,y_size: 2,x_stride: 2,y_stride: 2,mode: "max",name: "pool2"}
+  fc:
+    - {type: "fc",hidden_dim: 384,dropout: False,activation: "relu",name: "fc1",bn: True}
+    - {type: "fc",hidden_dim: 10,dropout: False,activation: "none",name: "output",bn: False}
